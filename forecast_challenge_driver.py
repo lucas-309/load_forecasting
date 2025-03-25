@@ -5,11 +5,12 @@ from model import get_data, prepare_data, add_features, create_model
 
 
 # Constants
-FORECAST_DATES = ['2024-02-15', '2024-04-04', '2024-06-26', '2024-09-13', '2024-11-10', '2025-03-25']
+FORECAST_DATES = ['2024-03-26']
 DATA_DIR = 'data/'
 def forecast_load(models, scalers, forecast_date, df):
     forecast_date = pd.to_datetime(forecast_date)
     df_forecast = df[df.index.get_level_values('DateTime').normalize() == forecast_date]
+    print(df_forecast)
     forecasted_loads = []
     for hour in range(24):
         df_hour = df_forecast[df_forecast['hour'] == hour]
@@ -34,9 +35,11 @@ def main():
     df = get_data()
     df = prepare_data(df)
     df = add_features(df)
+    print(df.head())
+    print(df.tail())
     # Define the training period
     train_start_date = dt.datetime(2020, 1, 1)
-    train_end_date = dt.datetime(2023, 12, 31)
+    train_end_date = dt.datetime(2024, 6, 15)
     models, scalers, _ = create_model(df, train_start_date, train_end_date)
     # Forecast for each date in FORECAST_DATES
     for forecast_date in FORECAST_DATES:

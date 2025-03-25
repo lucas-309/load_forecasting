@@ -140,7 +140,7 @@ def plot_predictions(df, models, scalers, train_end_date, num_periods=10):
     df_test = df[df.index.get_level_values('DateTime') > train_end_date]
     test_dates = df_test.index.get_level_values('DateTime').normalize().unique()
     # random_dates = np.random.choice(test_dates, num_periods, replace=False)
-    for date in ['2024-02-15', '2024-04-04', '2024-06-26', '2024-09-13', '2024-11-10']:
+    for date in ['2024-07-01', '2024-07-09', '2024-07-17', '2024-07-25', '2024-07-27', '2025-03-26']:
         df_period = df_test[df_test.index.get_level_values('DateTime').normalize() == date]
         actual_loads = df_period['Load'].values
         predicted_loads = []
@@ -169,7 +169,7 @@ if __name__ == '__main__':
     df = add_features(df)
     # Define the training period
     train_start_date = dt.datetime(2020, 1, 1)
-    train_end_date = dt.datetime(2023, 12, 31)
+    train_end_date = dt.datetime(2024, 6, 15)
     models, scalers, results_df = create_model(df, train_start_date, train_end_date)
     print(results_df)
     print("Average Test RMSE: ", sum(results_df['test_rmse']) / 24)
