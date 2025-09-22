@@ -11,6 +11,10 @@ This project provides a comprehensive framework for forecasting electricity load
 
 The core of this project is a machine learning model that predicts hourly electricity load. The model is trained on historical load data from the New York Independent System Operator (NYISO) and weather data from various weather stations in New York. The final output is a CSV file with 24-hour load forecasts for specified dates.
 
+## Results
+
+This model achieved a Root Mean Squared Error (RMSE) of 652 in the Millennium Load Forecasting Challenge 2025, securing third place in the competition.
+
 ## Features
 
 - **Automated Data Retrieval:** Scripts to download historical load data from NYISO and weather data from Meteostat.
@@ -93,9 +97,3 @@ The data is scaled using `StandardScaler` before being fed into the model.
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue if you have any suggestions or find any bugs.
-
-## License
-
-## License
-
-This project is licensed under the MIT License.
